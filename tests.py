@@ -178,7 +178,7 @@ def parse_listings(chapter_name):
             title = title_node.text_content()
             print('found listing', title)
             try:
-                filename = re.search(r'.+ \((.+)\)', title).group(1)
+                filename = re.search(r'.+ \((.+)\)', title)[1]
             except AttributeError as e:
                 raise AssertionError(f'Could not find filename in title {title}') from e
 

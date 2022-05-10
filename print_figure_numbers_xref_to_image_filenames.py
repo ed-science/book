@@ -7,10 +7,7 @@ for path in sorted(Path(__file__).absolute().parent.glob('*.asciidoc')):
     if not images:
         continue
     chapter_no = re.search(r'chapter_(\d\d)', str(path))
-    if chapter_no:
-        chapter_no = str(int(chapter_no.group(1)))
-    else:
-        chapter_no = '??'
+    chapter_no = str(int(chapter_no[1])) if chapter_no else '??'
     print(path.name)
     for ix, image in enumerate(images):
         print(f'  Figure {chapter_no}.{ix+1}: {image}')
